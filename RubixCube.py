@@ -37,6 +37,11 @@ class RubixCube:
         self.down.directions = [self.front, self.right, self.back, self.left]
 
 
+        # a systematic way to setup the box would be to create the front and left and right
+        # faces then add a top face and connect the edges together. Then rotate the cube
+        # so that the top becomes the front and continue. This seemed more complicated than
+        # efficient so I'll hardcode the faces
+
     def printCube(self):
         faces = {"front": self.front,
                  "back": self.back,
@@ -211,77 +216,4 @@ class RubixCube:
         temp = face.directions[0]
         face.directions = face.directions[1:]
         face.directions.append(temp)
-
-
-
-if __name__ == '__main__':
-    cube = RubixCube()
-    cube.printCube()
-    # cube.rotateFaceClockwise(cube.front)
-    cube.rotateFaceClockwise(cube.up)
-    cube.printCube()
-    cube.rotateFaceClockwise(cube.front)
-    cube.printCube()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        # a systematic way to setup the box would be to create the front and left and right
-        # faces then add a top face and connect the edges together. Then rotate the cube
-        # so that the top becomes the front and continue. This seemed more complicated than
-        # efficient so I'll hardcode the faces
-
-        # front = CubeFace()
-        # # setup the front and right and left of the cube 
-        # right = CubeFace()
-        # front.directions[0] = right
-        # right.directions[0] = front
-        # left = CubeFace()
-        # front.directions[2] = left
-        # left.directions[0] = front
-
-        # # fold in the box 
-        # primaryFace = front
-        # leftToFrontDirectionIndex = 0
-        # rightToFrontDirectionIndex = 0
-
-        # # check left top for a node, if it doesn't exist, we have to make one
-        # while(left.directions[(leftToFrontDirectionIndex - 1)%4] == None):
-        #     leftToFrontDirectionIndex = (leftToFrontDirectionIndex - 1)%4
-        #     rightToFrontDirectionIndex = (rightToFrontDirectionIndex + 1)%4
-
-        #     newFace = CubeFace()
-        #     newFace.directions[0] = left
-        #     newFace.directions[3] = primaryFace
-        #     newFace.directions[2] = right
-
-        #     left.directions[leftToFrontDirectionIndex] = newFace
-        #     right.directions[rightToFrontDirectionIndex] = newFace
-        # if it does exist we have to glue the edge 
-
-
-
-
-
-
-
-
-
-
-
 
